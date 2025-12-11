@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LOGI Nutritional — Sign in</title>
+  <meta name="description" content="Secure sign in page themed for LOGI Nutritional with crop/product imagery." />
+  <link rel="icon" type="image/png" href="https://i.ibb.co/Mkhpj225/favicon-largefill-1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --accent:#8B6F47;
+      --accent-dark:#6B5839;
+      --accent-light:#A0825D;
+      --muted:#6b6b6b;
+      --bg:#FAFAF8;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.90);
+      --shadow: 0 20px 50px rgba(0,0,0,0.25);
+      --radius:14px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      color:#3a3a3a;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:40px;
+      align-items:center;
+      padding:40px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* Background image with overlay - Crop field */
+    .hero::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: url('https://i.ibb.co/0ywjcsYy/divided-field-green-yellow-crops.jpg') center/cover no-repeat;
+      background-attachment:fixed;
+      z-index:-2;
+    }
+
+    /* Dark overlay on background */
+    .hero::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.60);
+      z-index:-1;
+    }
+
+    .left-section{
+      position:relative;
+      z-index:10;
+      color:white;
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft{
+      from{
+        opacity:0;
+        transform:translateX(-50px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    .left-section h2{
+      font-family:'Playfair Display',serif;
+      font-size:42px;
+      font-weight:700;
+      margin:0 0 16px 0;
+      color:#ffffff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .left-section p{
+      font-size:18px;
+      line-height:1.8;
+      color:rgba(255,255,255,0.95);
+      margin:0 0 28px 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .features{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .feature-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      background:rgba(255,255,255,0.10);
+      padding:18px;
+      border-radius:12px;
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.15);
+      transition:all 0.3s ease;
+    }
+
+    .feature-item:hover{
+      background:rgba(255,255,255,0.15);
+      transform:translateX(8px);
+    }
+
+    .feature-item i{
+      font-size:28px;
+      color:var(--accent-light);
+      margin-top:2px;
+      min-width:28px;
+    }
+
+    .feature-item h3{
+      margin:0 0 6px 0;
+      font-size:16px;
+      color:#ffffff;
+      font-weight:600;
+    }
+
+    .feature-item p{
+      margin:0;
+      font-size:14px;
+      color:rgba(255,255,255,0.90);
+      line-height:1.5;
+    }
+
+    .auth-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      position:relative;
+      z-index:10;
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    @keyframes slideInRight{
+      from{
+        opacity:0;
+        transform:translateX(50px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    .auth-card{
+      width:100%;
+      max-width:420px;
+      background: linear-gradient(135deg, rgba(250,250,248,0.97), var(--glass));
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:48px;
+      backdrop-filter: blur(10px);
+      border:2px solid rgba(255,255,255,0.3);
+    }
+
+    .auth-header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:28px;
+      justify-content:center;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-direction:column;
+      text-align:center;
+    }
+    .logo .mark{
+      width:64px;
+      height:64px;
+      border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-family:'Playfair Display',serif;
+      font-size:28px;
+      box-shadow: 0 8px 24px rgba(139,111,71,0.25);
+      padding:0;
+      overflow:hidden;
+    }
+
+    .logo .mark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:4px;
+    }
+
+    .logo .title{
+      font-size:28px;
+      color:var(--accent-dark);
+      font-weight:700;
+      font-family:'Playfair Display',serif;
+    }
+    .logo .subtitle{
+      font-size:14px;
+      color:var(--muted);
+      font-weight:500;
+    }
+
+    form{
+      margin-top:8px;
+    }
+    
+    h3#auth-title{
+      margin:0 0 24px !important;
+      font-size:22px;
+      color:var(--accent-dark);
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      text-align:center;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:18px;
+    }
+    label{
+      font-size:14px;
+      color:var(--accent-dark);
+      font-weight:600;
+    }
+    input[type="email"],input[type="password"]{
+      padding:14px 16px;
+      border-radius:10px;
+      border:2px solid rgba(139,111,71,0.15);
+      background:rgba(255,255,255,0.95);
+      outline:none;
+      font-size:15px;
+      transition:all 0.2s ease;
+      font-weight:500;
+    }
+    input[type="email"]:focus,input[type="password"]:focus{
+      border-color:var(--accent);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(139,111,71,0.12);
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:10px;
+      margin-bottom:20px;
+    }
+    .actions label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:14px;
+      color:var(--muted);
+      font-weight:500;
+    }
+    .actions input[type="checkbox"]{
+      cursor:pointer;
+      accent-color:var(--accent);
+      width:18px;
+      height:18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      border-radius:10px;
+      border:none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      transition:all 0.2s ease;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+      color:white;
+      box-shadow: 0 10px 28px rgba(139,111,71,0.2);
+      width:100%;
+      padding:14px 16px;
+      margin-top:8px;
+      font-size:16px;
+      justify-content:center;
+    }
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      box-shadow: 0 12px 32px rgba(139,111,71,0.3);
+      background:linear-gradient(90deg,var(--accent-dark),#5A4829);
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--accent-dark);
+      border:1px solid rgba(139,111,71,0.2);
+      padding:10px 12px;
+      font-size:13px;
+    }
+    .btn-ghost:hover{
+      background:rgba(139,111,71,0.08);
+    }
+
+    .sep{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:24px 0;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:600;
+    }
+    .sep::before,.sep::after{
+      content:'';
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(139,111,71,0.15),transparent);
+    }
+
+    .socials{
+      display:flex;
+      gap:12px;
+    }
+    .socials .btn{
+      flex:1;
+      justify-content:center;
+      background:rgba(255,255,255,0.85);
+      border:2px solid rgba(139,111,71,0.12);
+      color:var(--accent-dark);
+      padding:12px 14px;
+      font-weight:600;
+      font-size:14px;
+    }
+    .socials .btn:hover{
+      background:#fff;
+      border-color:var(--accent);
+      box-shadow:0 4px 12px rgba(139,111,71,0.1);
+    }
+
+    .muted{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:20px;
+      text-align:center;
+      font-weight:500;
+    }
+    .muted a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .muted a:hover{
+      text-decoration:underline;
+    }
+
+    .forgot-link{
+      color:var(--accent);
+      font-size:14px;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .forgot-link:hover{
+      text-decoration:underline;
+    }
+
+    .error-msg{
+      color:#c41e3a;
+      font-size:12px;
+      margin-top:4px;
+      display:none;
+      font-weight:600;
+    }
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+        gap:24px;
+        padding:24px;
+      }
+      .left-section h2{font-size:32px}
+      .left-section p{font-size:16px}
+      .auth-card{max-width:420px}
+    }
+
+    @media (max-width:768px){
+      .hero{padding:16px; gap:18px}
+      .auth-card{padding:36px 24px}
+      .logo .mark{width:56px; height:56px; font-size:24px}
+      .logo .title{font-size:24px}
+      h3#auth-title{font-size:20px}
+      .features{gap:12px}
+      .feature-item{padding:12px}
+    }
+
+    @media (max-width:480px){
+      .hero{padding:12px}
+      .auth-card{padding:24px 18px}
+      .logo .mark{width:52px; height:52px; font-size:22px}
+      .logo .title{font-size:20px}
+      h3#auth-title{font-size:18px}
+      input[type="email"],input[type="password"]{padding:12px 14px; font-size:14px}
+      .btn-primary{padding:12px 14px; font-size:14px}
+      .left-section h2{font-size:24px}
+      .left-section p{font-size:14px}
+      .feature-item{gap:10px}
+      .feature-item i{font-size:24px}
+      .feature-item h3{font-size:14px}
+      .feature-item p{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-live="polite">
+    <!-- Left Section with Features -->
+    <section class="left-section">
+      <h2>Low GI Nutrition at Its Best</h2>
+      <p>Unlock the power of slow-release nutrition designed for stable energy, healthy weight, and better blood sugar control.</p>
+
+      <div class="features">
+        <div class="feature-item">
+          <i class="fas fa-chart-line"></i>
+          <div>
+            <h3>Stabilizes Blood Sugar</h3>
+            <p>Say goodbye to sugar spikes! Our slow-release formula keeps your glucose levels safe and steady throughout the day.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-utensils"></i>
+          <div>
+            <h3>Controls Hunger</h3>
+            <p>Packed with fiber and protein, our products keep you feeling full longer and reduce those constant hunger cravings.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-weight"></i>
+          <div>
+            <h3>Supports Weight Loss</h3>
+            <p>Replace high-calorie meals while getting essential nutrients. Achieve a healthy calorie deficit without sacrificing nutrition.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-heart"></i>
+          <div>
+            <h3>Improves Insulin Health</h3>
+            <p>Regular consumption improves how your body uses insulin naturally, making blood sugar management easier over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Section with Auth Card -->
+    <div class="auth-wrap" aria-label="Authentication">
+      <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <div class="auth-header">
+          <div class="logo">
+            <div class="mark">
+              <img src="https://i.ibb.co/Mkhpj225/favicon-largefill-1.png" alt="LOGI Logo" />
+            </div>
+            <div>
+              <div class="title">LOGI</div>
+              <div class="subtitle">Secure access</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-login" aria-labelledby="auth-title" autocomplete="on">
+          <h3 id="auth-title">Sign in to your account</h3>
+
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" inputmode="email" placeholder="you@farmco.com" required />
+            <div class="error-msg" id="email-error">Please enter a valid email address</div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="password" name="password" type="password" placeholder="••••••••" required style="flex:1" />
+              <button type="button" id="toggle-pw" aria-label="Show password" class="btn btn-ghost">Show</button>
+            </div>
+            <div class="error-msg" id="password-error">Password is required</div>
+          </div>
+
+          <div class="actions">
+            <label>
+              <input id="remember" type="checkbox" /> Remember me
+            </label>
+            <a href="#" class="forgot-link" id="forgot">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Sign In</button>
+
+          <div class="sep">Or continue with</div>
+
+          <div class="socials">
+            <button type="button" class="btn" title="Sign in with Google">Google</button>
+            <button type="button" class="btn" title="Sign in with Microsoft">Microsoft</button>
+            <button type="button" class="btn" title="Sign in with Apple">Apple</button>
+          </div>
+
+          <div class="muted">By continuing you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const formLogin = document.getElementById('form-login');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const togglePw = document.getElementById('toggle-pw');
+      const rememberCheckbox = document.getElementById('remember');
+      const forgotLink = document.getElementById('forgot');
+
+      const SESSION_KEY = 'logi_user_authenticated';
+      const EMAIL_KEY = 'logi_user_email';
+
+      function checkSession(){
+        const isAuthenticated = sessionStorage.getItem(SESSION_KEY);
+        if(isAuthenticated){
+          redirectToDashboard();
+        }
+      }
+
+      function redirectToDashboard(){
+        window.location.href = 'index.html';
+      }
+
+      togglePw.addEventListener('click', function(e){
+        e.preventDefault();
+        if(passwordInput.type === 'password'){
+          passwordInput.type = 'text';
+          togglePw.textContent = 'Hide';
+          togglePw.setAttribute('aria-label','Hide password');
+        } else {
+          passwordInput.type = 'password';
+          togglePw.textContent = 'Show';
+          togglePw.setAttribute('aria-label','Show password');
+        }
+      });
+
+      forgotLink.addEventListener('click', function(e){
+        e.preventDefault();
+        alert('Password reset link has been sent to your email. (Demo feature)');
+      });
+
+      function validateEmail(email){
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function clearErrors(){
+        document.getElementById('email-error').style.display = 'none';
+        document.getElementById('password-error').style.display = 'none';
+      }
+
+      formLogin.addEventListener('submit', function(e){
+        e.preventDefault();
+        clearErrors();
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        let hasError = false;
+
+        if(!email || !validateEmail(email)){
+          document.getElementById('email-error').style.display = 'block';
+          hasError = true;
+        }
+
+        if(!password){
+          document.getElementById('password-error').style.display = 'block';
+          hasError = true;
+        }
+
+        if(hasError) return;
+
+        const adminCreds = [
+          { email: 'admin@logi.com', password: 'admin123' },
+          { email: 'manager@logi.com', password: 'manager123' }
+        ];
+        
+        const isAdmin = adminCreds.some(cred => cred.email === email && cred.password === password);
+
+        // Simulate authentication (replace with real API call)
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        sessionStorage.setItem(EMAIL_KEY, email);
+
+        if(isAdmin){
+          sessionStorage.setItem('logi_admin_authenticated', 'true');
+          // Store admin signin data
+          const adminSignins = JSON.parse(localStorage.getItem('logi_signin_logs')) || [];
+          adminSignins.push({
+            email: email,
+            timestamp: new Date().toISOString(),
+            type: 'admin',
+            device: navigator.userAgent,
+            loginTime: Date.now()
+          });
+          localStorage.setItem('logi_signin_logs', JSON.stringify(adminSignins));
+        } else {
+          // Store user signin data
+          const userSignins = JSON.parse(localStorage.getItem('logi_user_signins')) || [];
+          userSignins.push({
+            email: email,
+            timestamp: new Date().toISOString(),
+            type: 'user',
+            device: navigator.userAgent,
+            loginTime: Date.now()
+          });
+          localStorage.setItem('logi_user_signins', JSON.stringify(userSignins));
+        }
+
+        // Store remember-me preference if checked
+        if(rememberCheckbox.checked){
+          localStorage.setItem('logi_remember_email', email);
+        }
+
+        // Redirect based on user type
+        setTimeout(() => {
+          if(isAdmin){
+            window.location.href = 'admin-panel.html';
+          } else {
+            window.location.href = 'index.html';
+          }
+        }, 500);
+      });
+
+      function prefillEmail(){
+        const savedEmail = localStorage.getItem('logi_remember_email');
+        if(savedEmail){
+          emailInput.value = savedEmail;
+          rememberCheckbox.checked = true;
+          passwordInput.focus();
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function(){
+        checkSession();
+        prefillEmail();
+        emailInput.focus();
+      });
+
+    })();
+  </script>
+</body>
+</html>
