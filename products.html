@@ -182,30 +182,21 @@
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    const defaultProducts = [
-      {
+    {
         id: 1,
-        name: 'Nutritious Ragi Malt Powder',
+        name: 'Nutritious Ragi Malt Powder-500g',
         image: 'https://i.ibb.co/Cs61R3Fd/Gemini-Generated-Image-dwv1v9dwv1v9dwv1.png',
         description: 'Controls diabetes, lowers LDL, regulates blood pressure, boosts testosterone, helps in weight loss, improves immunity, increases bone & muscle strength. Perfect for all ages.',
         category: 'Malt Powder',
-        price: 399,
-        variants: [
-          { size: '450g', price: 399 },
-          { size: '900g', price: 699 }
-        ]
+        price: 250,
       },
       {
         id: 2,
-        name: 'Nutritional Multimillet Flour',
+        name: 'Nutritional Multimillet Flour-500g',
         image: 'https://i.ibb.co/kV0BPpv6/Gemini-Generated-Image-er69hzer69hzer69.png',
         description: 'Delicious & Nutritious! Low GI helps regulate diabetes, supports weight management, improves immunity & makes body healthy. Best for all age groups. 500g pack.',
         category: 'Flour',
-        price: 299,
-        variants: [
-          { size: '500g', price: 299 },
-          { size: '1kg', price: 549 }
-        ]
+        price: 250,
       },
       {
         id: 3,
@@ -213,47 +204,35 @@
         image: 'https://i.ibb.co/5xtSdfNL/Gemini-Generated-Image-uedgjwuedgjwuedg.png',
         description: 'Low GI for Smart Living! Diabetic friendly, good for all ages, supports weight control, rich in protein & nutrients. Lab tested in NABL accredited facility. 950g pack.',
         category: 'Rice',
-        price: 449,
+        price: 200,
         variants: [
-          { size: '950g', price: 449 },
-          { size: '1.9kg', price: 799 }
+          { size: '1kg', price: 200 },
+          { size: '5kg', price: 1000 }
         ]
       },
       {
         id: 4,
-        name: 'Chocolate Multimillet Malt',
+        name: 'Chocolate Multimillet Malt-500g',
         image: 'https://i.ibb.co/N2wKvKYx/Gemini-Generated-Image-5g26d05g26d05g26.png',
         description: 'Energy Boost! Delicious chocolate taste with packed nutrition from grains. Strong & Smart formula packed with grains. Rich chocolate taste, perfect for kids & adults.',
         category: 'Malt Powder',
-        price: 349,
-        variants: [
-          { size: '400g', price: 349 },
-          { size: '800g', price: 599 }
-        ]
+        price: 350,
       },
       {
         id: 5,
-        name: 'Nutritious Multi Millet Malt Powder',
+        name: 'Nutritious Multi Millet Malt Powder-500g',
         image: 'https://i.ibb.co/7tqxRpV3/Gemini-Generated-Image-qn6xfaqn6xfaqn6x.png',
         description: 'Delicious multi-millet malt blended with nuts and super grains. Low GI formulation supports steady energy, aids weight management, and strengthens immunity — ideal for kids and adults as a daily nutritious drink.',
         category: 'Malt Powder',
-        price: 349,
-        variants: [
-          { size: '450g', price: 349 },
-          { size: '900g', price: 649 }
-        ]
+        price: 250,
       },
       {
         id: 6,
-        name: 'Nutritional Ragi Millet Flour',
+        name: 'Nutritional Ragi Millet Flour-500g',
         image: 'https://i.ibb.co/DH9BFdbx/Gemini-Generated-Image-4s7ep64s7ep64s7e.png',
         description: 'High-quality ragi (finger millet) flour with low glycemic index to help regulate blood sugar. Supports weight management, boosts immunity, improves bone & muscle strength, and helps lower LDL cholesterol. Suitable for all age groups.',
         category: 'Flour',
-        price: 399,
-        variants: [
-          { size: '450g', price: 399 },
-          { size: '900g', price: 699 }
-        ]
+        price: 200,
       }
     ];
 
